@@ -11,36 +11,23 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Ph.D in Electronic Engineering, Queen Mary University of Lonodon, 2027 (expected)
+* B.Eng. in Electronic and Electrical Engineering, University College London, 2021
 
-Work experience
+Work Experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* **AI Engineer** - PONS.ai, April 2023 – Now
+  * Focus on vision generative AI, using models like Stable Diffusion. Fine-tuning with LoRA and building pipelines for client events.
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* **Research Engineer** - Visio Impulse, January 2022 - April 2023
+  * Applied ML across various industires with a focus on computer vision and NLP.
+  * Oral Presentation at MATHMET 2022, Selected as highly ranked abstract by the Executive Committee (Visualising uncertainty in 3D scan completion)
 
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* **Open Source Contributions** - [Hugging Face](https://huggingface.co/mattmdjaga)
+  * Contributed to Computer Vision courses in Muliti-modal and Generative models sections.
+  * Contributed a fine-tuned Semantic Segmentation model which has over 1 million downloads.
   
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
+<!--
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
@@ -58,7 +45,12 @@ Teaching
   <ul>{% for post in site.teaching reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Service and leadership
+-->
+
+Volunteering
 ======
-* Currently signed in to 43 different slack teams
+* **UCL BJJ society President**, June 2019 - June 2020
+  * Managed a society with +100 members, organising training, events and competitions.
+* **UCL Mentor**, September 2020 - January 2021
+  * Mentored 11 students in their first term of university.
+
