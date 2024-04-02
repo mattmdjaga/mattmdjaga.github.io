@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I'm an incoming PhD student at Queen Mary Univserity of London in the School of Electronic Engineering and Computer Science. I'm supervised by [Dr. Julia Ive](https://julia-ive.github.io/) and [Prof. Maria Liakata](https://maria-liakata-nlp-group.github.io/team/pi.html). My PhD will revolve around anonymisation of and using foundation models, which will consist of topics such as openendedness, mechanistic interpretability, RL for foundation models and other similar topics.
+I'm an incoming PhD student at Queen Mary Univserity of London in the School of Electronic Engineering and Computer Science. I'm supervised by [Dr. Julia Ive](https://julia-ive.github.io/) and [Prof. Maria Liakata](https://maria-liakata-nlp-group.github.io/team/pi.html). My PhD will revolve around anonymisation of and using foundation models, which will consist of topics such as alignment, mechanistic interpretability, red teaming and other similar topics.
 
 Pre-PhD
 ======
