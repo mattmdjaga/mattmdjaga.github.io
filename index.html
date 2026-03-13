@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mateusz Dziemian</title>
+<meta name="description" content="AI Safety Engineer at Gray Swan AI. Red teaming, agent security, and adversarial ML research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #080b0e;
+  --surface: #0d1117;
+  --surface-2: #141b22;
+  --border: #1e2a35;
+  --border-hover: #2a3d4e;
+  --text: #d1d5da;
+  --text-bright: #eceff2;
+  --text-dim: #6b7d8e;
+  --accent: #2dd4a8;
+  --accent-dim: rgba(45, 212, 168, 0.12);
+  --accent-glow: rgba(45, 212, 168, 0.06);
+  --mono: 'IBM Plex Mono', monospace;
+  --serif: 'Newsreader', Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  line-height: 1.75;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+a:hover { opacity: 0.75; }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 0.9rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  background: rgba(8,11,14,0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav .logo {
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+nav .links {
+  display: flex;
+  gap: 2rem;
+}
+
+nav .links a {
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+  font-size: 0.7rem;
+}
+nav .links a:hover { color: var(--accent); opacity: 1; }
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  align-items: center;
+  padding: 8rem 4rem 4rem;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  animation: fadeUp 0.7s ease-out;
+}
+
+.hero-text .affiliation {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.hero-text .affiliation a {
+  color: var(--accent);
+}
+
+.hero-text h1 {
+  font-family: var(--mono);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--text-bright);
+  letter-spacing: -0.03em;
+}
+
+.hero-text .bio {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+.hero-text .bio strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.link-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+  opacity: 1;
+}
+
+.chip.primary {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.chip.primary:hover {
+  background: rgba(45, 212, 168, 0.2);
+}
+
+.hero-photo {
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeUp 0.7s ease-out 0.15s both;
+}
+
+.photo-wrap {
+  width: 260px;
+  height: 260px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 6px var(--accent-dim);
+}
+
+.photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(40%) contrast(1.08) brightness(0.95);
+}
+
+.photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, transparent 60%, rgba(45, 212, 168, 0.08) 100%);
+  pointer-events: none;
+}
+
+/* DIVIDER */
+.divider {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+.divider hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+}
+
+/* SECTION */
+section {
+  padding: 3rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-dim);
+  margin-bottom: 2.5rem;
+}
+
+/* PAPERS */
+.papers {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.paper {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 2rem;
+  transition: all 0.2s;
+}
+
+.paper:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.paper:hover {
+  background: var(--accent-glow);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.paper-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-bright);
+  margin-bottom: 0.35rem;
+  line-height: 1.45;
+}
+
+.paper-authors {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 0.35rem;
+  line-height: 1.5;
+}
+
+.paper-authors .me {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.paper-bottom {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.venue-tag {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+}
+
+.paper-note {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.paper-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: start;
+  padding-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.paper-link {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.6rem;
+  transition: all 0.2s;
+}
+.paper-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* ABOUT */
+.about-content {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 4rem;
+}
+
+.about-text {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.about-text p { margin-bottom: 1rem; }
+.about-text strong { color: var(--text); font-weight: 500; }
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  padding-top: 0.3rem;
+}
+
+.number-item {
+  border-left: 1px solid var(--border);
+  padding-left: 1rem;
+}
+
+.number-val {
+  font-family: var(--mono);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+
+.number-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  margin-top: 0.15rem;
+}
+
+/* OSS */
+.oss-item {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.oss-item:first-of-type { border-top: 1px solid var(--border); }
+
+.oss-item h3 {
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-bright);
+  margin-bottom: 0.3rem;
+}
+
+.oss-item p {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.oss-stat {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  margin-top: 0.4rem;
+  display: inline-block;
+}
+
+/* CONTACT */
+.contact-block {
+  padding: 3rem 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.contact-block h2 {
+  font-family: var(--mono);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-bright);
+  margin-bottom: 0.8rem;
+}
+
+.contact-block p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+}
+
+/* FOOTER */
+footer {
+  padding: 1.5rem 4rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-align: center;
+  letter-spacing: 0.04em;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ANIM */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.5s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 7rem 1.5rem 3rem;
+    gap: 2rem;
+    min-height: auto;
+  }
+  .hero-photo { order: -1; justify-content: flex-start; }
+  .photo-wrap { width: 180px; height: 180px; }
+  section { padding: 3.5rem 1.5rem; }
+  .about-content { grid-template-columns: 1fr; gap: 2rem; }
+  nav { padding: 0.9rem 1.5rem; }
+  .paper { grid-template-columns: 1fr; gap: 0.6rem; }
+  .contact-block { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .divider { padding: 0 1.5rem; }
+  footer { padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">mattmdjaga</div>
+  <div class="links">
+    <a href="#research">research</a>
+    <a href="#about">about</a>
+    <a href="#contact">contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <p class="affiliation">AI Safety Engineer @ <a href="https://grayswan.ai" target="_blank">Gray Swan AI</a></p>
+    <h1>Mateusz Dziemian</h1>
+    <p class="bio">I build benchmarks and red teaming tools to stress test AI agents. My biggest works are <strong>AgentHarm</strong> (200+ citations) and <strong>segformer_b2_clothes</strong> (30M+ downloads on HuggingFace). Currently interested in eval awareness and automating AI safety research.</p>
+    <div class="link-row">
+      <a href="mailto:mattmdjaga@gmail.com" class="chip">email</a>
+      <a href="https://scholar.google.com/citations?user=5VQMaEEAAAAJ&hl=en" target="_blank" class="chip">scholar</a>
+      <a href="https://github.com/mattmdjaga" target="_blank" class="chip">github</a>
+      <a href="https://x.com/mattmdjaga" target="_blank" class="chip">x</a>
+      <a href="https://huggingface.co/mattmdjaga" target="_blank" class="chip">hf</a>
+      <a href="https://www.linkedin.com/in/mateusz-dziemian-28076874/" target="_blank" class="chip">linkedin</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-wrap">
+      <img src="profile.jpg" alt="Mateusz Dziemian" />
+    </div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<section id="research">
+  <div class="section-label">Selected Research</div>
+
+  <div class="papers">
+    <div class="paper fade-in">
+      <div>
+        <div class="paper-title">Security Challenges in AI Agent Deployment: Insights from a Large-Scale Public Competition</div>
+        <div class="paper-authors">A. Zou, M. Lin, E. Jones, M. Nowak, <span class="me">M. Dziemian</span>, N. Winter, A. Grattan, V. Nathanael, A. Croft, X. Davies, J. Patel, R. Kirk, N. Burnikell, Y. Gal, D. Hendrycks, J. Z. Kolter, M. Fredrikson</div>
+        <div class="paper-bottom">
+          <span class="venue-tag">NeurIPS 2025</span>
+        </div>
+      </div>
+      <div class="paper-links">
+        <a href="https://openreview.net/pdf/04ee18b8ef31f3174b11ef48164ec65bb4b5ca6b.pdf" target="_blank" class="paper-link">pdf</a>
+      </div>
+    </div>
+
+    <div class="paper fade-in">
+      <div>
+        <div class="paper-title">AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents</div>
+        <div class="paper-authors">M. Andriushchenko, A. Souly, <span class="me">M. Dziemian</span>, D. Duenas, M. Lin, J. Wang, D. Hendrycks, A. Zou, Z. Kolter, M. Fredrikson, E. Winsor, J. Wynne, Y. Gal, X. Davies</div>
+        <div class="paper-bottom">
+          <span class="venue-tag">ICLR 2025</span>
+          <span class="paper-note">200+ citations</span>
+        </div>
+      </div>
+      <div class="paper-links">
+        <a href="https://huggingface.co/ai-safety-institute/AgentHarm" target="_blank" class="paper-link">data</a>
+        <a href="https://arxiv.org/abs/2410.09024" target="_blank" class="paper-link">pdf</a>
+      </div>
+    </div>
+
+    <div class="paper fade-in">
+      <div>
+        <div class="paper-title">Deceptive Automated Interpretability: Language Models Coordinating to Fool Oversight Systems</div>
+        <div class="paper-authors">S. Lermen, <span class="me">M. Dziemian</span>, N. Pérez-Campanero Antolín</div>
+        <div class="paper-bottom">
+          <span class="venue-tag">NeurIPS 2024 · SATA Workshop</span>
+        </div>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2504.07831" target="_blank" class="paper-link">pdf</a>
+      </div>
+    </div>
+
+    <div class="paper fade-in">
+      <div>
+        <div class="paper-title">Applying Refusal-Vector Ablation to Llama 3.1 70B Agents</div>
+        <div class="paper-authors">S. Lermen, <span class="me">M. Dziemian</span>, G. Pimpale</div>
+        <div class="paper-bottom">
+          <span class="venue-tag">NeurIPS 2024 · SafeGenAi Workshop</span>
+        </div>
+      </div>
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2410.10871" target="_blank" class="paper-link">pdf</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">About</div>
+
+  <div class="about-content">
+    <div class="about-text">
+      <p><strong>AI Safety Engineer at Gray Swan AI.</strong> I work on red teaming AI agents and building safety benchmarks. At Gray Swan I focus on automated red teaming (Shade), our public red teaming competitions (the Arena), and pre release safety evaluations for frontier models.</p>
+      <p>Currently interested in <strong>eval awareness</strong> and <strong>automating AI safety research</strong>, in the direction of work like <a href="https://alignment.anthropic.com/2025/petri/" target="_blank">Petri</a> and <a href="https://arxiv.org/abs/2602.22755v3" target="_blank">AuditBench</a>.</p>
+      <p>Outside of research, I'm a purple belt in BJJ (10th Planet London) turned boulderer, currently projecting V6. Based in London.</p>
+    </div>
+
+    <div class="numbers">
+      <div class="number-item">
+        <div class="number-val">30M+</div>
+        <div class="number-label">HF downloads</div>
+      </div>
+      <div class="number-item">
+        <div class="number-val">200+</div>
+        <div class="number-label">citations</div>
+      </div>
+      <div class="number-item">
+        <div class="number-val">4</div>
+        <div class="number-label">papers</div>
+      </div>
+      <div class="number-item">
+        <div class="number-val">V6</div>
+        <div class="number-label">bouldering</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section>
+  <div class="section-label">Open Source</div>
+
+  <div class="oss-item fade-in">
+    <h3>AgentHarm</h3>
+    <p>Open sourced subset of the AgentHarm benchmark for measuring harmfulness of LLM agents. 44 of 110 unique behaviors publicly available, covering 11 harm categories. Available on Hugging Face and Inspect AI.</p>
+    <span class="oss-stat">200+ citations</span>
+    <br>
+    <a href="https://huggingface.co/ai-safety-institute/AgentHarm" target="_blank" class="paper-link" style="margin-top: 0.6rem; display: inline-block;">huggingface</a>
+    <a href="https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/agentharm" target="_blank" class="paper-link" style="margin-top: 0.6rem; display: inline-block;">inspect</a>
+    <a href="https://arxiv.org/abs/2410.09024" target="_blank" class="paper-link" style="margin-top: 0.6rem; display: inline-block;">paper</a>
+  </div>
+
+  <div class="oss-item fade-in">
+    <h3>segformer_b2_clothes</h3>
+    <p>Fine tuned SegFormer for body parts and clothing segmentation. One of the most liked and most downloaded segmentation models on Hugging Face.</p>
+    <span class="oss-stat">30,000,000+ downloads</span>
+    <br>
+    <a href="https://huggingface.co/mattmdjaga/segformer_b2_clothes" target="_blank" class="paper-link" style="margin-top: 0.6rem; display: inline-block;">huggingface</a>
+  </div>
+
+  <div class="oss-item fade-in">
+    <h3>Contributions</h3>
+    <p>PRs to Inspect AI for Hugging Face agent support. Sections on multi-modal and generative models for the HuggingFace Computer Vision course.</p>
+    <a href="https://github.com/mattmdjaga" target="_blank" class="paper-link" style="margin-top: 0.6rem; display: inline-block;">github</a>
+  </div>
+</section>
+
+<div class="contact-block" id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Let's talk.</h2>
+  <p>Interested in Gray Swan, collaborating on research, or just doing interesting things. Reach out.</p>
+  <div class="link-row">
+    <a href="mailto:mattmdjaga@gmail.com" class="chip">mattmdjaga@gmail.com</a>
+    <a href="https://x.com/mattmdjaga" target="_blank" class="chip">x</a>
+    <a href="https://www.linkedin.com/in/mateusz-dziemian-28076874/" target="_blank" class="chip">linkedin</a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Mateusz Dziemian · London
+</footer>
+
+<script>
+const els = document.querySelectorAll('.fade-in');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(el => observer.observe(el));
+} else {
+  els.forEach(el => el.classList.add('visible'));
+}
+</script>
+</body>
+</html>
+  
