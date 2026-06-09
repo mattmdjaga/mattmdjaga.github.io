@@ -363,18 +363,18 @@ const CONTACTS = [
 
 const PAPERS = [
   {
-    title: "A New Framework for Cybersecurity Refusals in AI Agents",
-    authors: "E. K. Jones, M. Dziemian, M. Fredrikson, J. Z. Kolter",
-    venue: "ICML · 2026",
-    tags: ["Refusals", "Cybersecurity", "8 frontier models"],
-    links: [{ label: "arxiv", href: "https://arxiv.org/abs/2606.02644" }],
-  },
-  {
     title: "How Vulnerable Are AI Agents to Indirect Prompt Injections? Insights from a Large Scale Public Competition",
     authors: "M. Dziemian, M. Lin, X. Fu, M. Nowak, N. Winter, E. K. Jones, A. Zou, L. Ahmad, K. Chaudhuri, S. Chennabasappa, X. Davies, et al.",
     venue: "Preprint · 2026",
     tags: ["First author", "13 frontier models", "272K+ attacks"],
     links: [{ label: "arxiv", href: "https://arxiv.org/abs/2603.15714" }],
+  },
+  {
+    title: "A New Framework for Cybersecurity Refusals in AI Agents",
+    authors: "E. K. Jones, M. Dziemian, M. Fredrikson, J. Z. Kolter",
+    venue: "ICML · 2026",
+    tags: ["Refusals", "Cybersecurity", "8 frontier models"],
+    links: [{ label: "arxiv", href: "https://arxiv.org/abs/2606.02644" }],
   },
   {
     title: "Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition",
