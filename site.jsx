@@ -133,7 +133,7 @@ function Site() {
         {[
           { n: "30M+", l: "HF downloads" },
           { n: "200+", l: "Citations" },
-          { n: "5", l: "Papers" },
+          { n: "6", l: "Papers" },
           { n: "V6", l: "Bouldering" },
         ].map((s, i) => (
           <div key={i} className="stat-cell">
@@ -363,15 +363,22 @@ const CONTACTS = [
 
 const PAPERS = [
   {
+    title: "A New Framework for Cybersecurity Refusals in AI Agents",
+    authors: "E. K. Jones, M. Dziemian, M. Fredrikson, J. Z. Kolter",
+    venue: "ICML · 2026",
+    tags: ["Refusals", "Cybersecurity", "8 frontier models"],
+    links: [{ label: "arxiv", href: "https://arxiv.org/abs/2606.02644" }],
+  },
+  {
     title: "How Vulnerable Are AI Agents to Indirect Prompt Injections? Insights from a Large Scale Public Competition",
-    authors: "M. Dziemian, M. Lin, X. Fu, M. Nowak, N. Winter, E. Jones, A. Zou, L. Ahmad, K. Chaudhuri, S. Chennabasappa, X. Davies, et al.",
+    authors: "M. Dziemian, M. Lin, X. Fu, M. Nowak, N. Winter, E. K. Jones, A. Zou, L. Ahmad, K. Chaudhuri, S. Chennabasappa, X. Davies, et al.",
     venue: "Preprint · 2026",
     tags: ["First author", "13 frontier models", "272K+ attacks"],
     links: [{ label: "arxiv", href: "https://arxiv.org/abs/2603.15714" }],
   },
   {
     title: "Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition",
-    authors: "A. Zou, M. Lin, E. Jones, M. Nowak, M. Dziemian, N. Winter, A. Grattan, V. Nathanael, et al.",
+    authors: "A. Zou, M. Lin, E. K. Jones, M. Nowak, M. Dziemian, N. Winter, A. Grattan, V. Nathanael, et al.",
     venue: "NeurIPS · 2025",
     tags: ["Deployment", "Competition"],
     links: [{ label: "pdf", href: "https://openreview.net/pdf/04ee18b8ef31f3174b11ef48164ec65bb4b5ca6b.pdf" }],
