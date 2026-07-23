@@ -114,7 +114,7 @@ function Site() {
           <div className="hero-meta">
             <div className="meta-row">
               <span className="meta-label">Role</span>
-              <span className="meta-value">AI Safety Engineer</span>
+              <span className="meta-value">ML Engineering Manager</span>
             </div>
             <div className="meta-row">
               <span className="meta-label">At</span>
@@ -134,7 +134,7 @@ function Site() {
           { n: "30M+", l: "HF downloads" },
           { n: "200+", l: "Citations" },
           { n: "6", l: "Papers" },
-          { n: "V6", l: "Bouldering" },
+          { n: "V7", l: "Bouldering" },
         ].map((s, i) => (
           <div key={i} className="stat-cell">
             <div className="stat-num">{s.n}</div>
@@ -156,11 +156,11 @@ function Site() {
         <SectionHead num="03" title="About" kicker="Notes from the author" />
         <div className="about-body">
           <p className="about-para">
-            <span className="dropcap">A</span>I Safety Engineer at Gray Swan AI.
-            I work on red teaming AI agents and building safety benchmarks.
-            At Gray Swan I focus on automated red teaming (<em className="em">Shade</em>),
-            our public red teaming competitions (<em className="em">the Arena</em>),
-            and pre release safety evaluations for frontier models.
+            <span className="dropcap">M</span>L Engineering Manager at Gray Swan AI,
+            where I lead <em className="em">Shade</em>, our automated red teaming product.
+            I work on red teaming AI agents and building safety benchmarks, spanning
+            our public red teaming competitions (<em className="em">the Arena</em>) and
+            pre release safety evaluations for frontier models.
           </p>
           <p className="about-para">
             Currently interested in <strong>eval awareness</strong> and{" "}
@@ -169,7 +169,7 @@ function Site() {
           </p>
           <p className="about-para">
             Outside of research, I'm a purple belt in BJJ (10th Planet London)
-            turned boulderer, currently projecting V6. Based in London.
+            turned boulderer, currently projecting V7. Based in London.
           </p>
         </div>
       </section>
