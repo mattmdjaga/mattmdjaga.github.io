@@ -132,7 +132,7 @@ function Site() {
       <section className="stats">
         {[
           { n: "30M+", l: "HF downloads" },
-          { n: "200+", l: "Citations" },
+          { n: "500+", l: "Citations" },
           { n: "6", l: "Papers" },
           { n: "V7", l: "Bouldering" },
         ].map((s, i) => (
